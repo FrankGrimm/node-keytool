@@ -1,0 +1,19 @@
+{
+  "name": "node-keytool",
+  "version": "0.0.1",
+  "description": "wrapper for keytool binary",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/FrankGrimm/node-keytool/"
+  },
+  "keywords": [
+    "keytool",
+    "crypto"
+  ],
+  "author": "Frank Grimm <frankgrimm@gmail.com>",
+  "license": "MIT"
+}
