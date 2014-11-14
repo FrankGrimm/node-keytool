@@ -1,6 +1,6 @@
 {
   "name": "node-keytool",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines" : { "node" : ">=0.10.27 <0.12" },
   "description": "wrapper for keytool binary",
   "main": "index.js",
