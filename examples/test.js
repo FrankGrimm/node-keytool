@@ -15,7 +15,7 @@ var printlist = function printlist(err, res) {
     }
 };
 
-var store = Keytool('test.keystore', 'changeit', {debug: false, storetype: 'JCEKS'});
+var store = Keytool('example.keystore', 'changeit', {debug: false, storetype: 'JCEKS'});
 
 store.genkeypair('keyalias' + Math.round(Math.random()*100), 'changeit', 'CN=testkey', 120, null, null, null, null, new Date(), function(err, res) {
     if (err) {
@@ -29,21 +29,21 @@ store.genkeypair('keyalias' + Math.round(Math.random()*100), 'changeit', 'CN=tes
         store.genkeypair('testca1', 'changeit', 'CN=testca1', 356, function(err, res) {
             console.log(res.alias, 'created');
 
-            store.certreq('testca', 'changeit', 'CN=careq1', 'reqout.req', function(err, res) {
+            store.certreq('testca', 'changeit', 'CN=careq1', 'example.req', function(err, res) {
                 console.log('certreq');
 
                 store.certreq('testca', 'changeit', 'CN=stdreq', function(err, res) {
                     var certRequestData = res.outdata;
 
                     //(alias, keypass, dname, infile, datain, outfile, rfcoutput, validity, sigalg, startdate, cb)
-                    store.gencert('testca', 'changeit', 'CN=overridedn', 'reqout.req', undefined, 'reqout.crt', true, function(err, res) {
+                    store.gencert('testca', 'changeit', 'CN=overridedn', 'example.req', undefined, 'example.crt', true, function(err, res) {
                         console.log('gencert (outfile)');
 
                         store.gencert('testca', 'changeit', 'CN=testca-req-1', undefined, certRequestData, undefined, function(err, res) {
                             console.log('gencert (std) ' + (res.outdata ? 'got data' : 'no data ' + err));
                             var generatedCertData = res.outdata;
 
-                            store.importcert('imported-fromfile', 'changeit', 'reqout.crt', function(err, res) {
+                            store.importcert('imported-fromfile', 'changeit', 'example.crt', function(err, res) {
                                 console.log('importcert (file)');
 
                                 store.importcert('imported-fromstdin', 'changeit', undefined, generatedCertData, true, function(err, res) {
@@ -67,14 +67,14 @@ store.genkeypair('keyalias' + Math.round(Math.random()*100), 'changeit', 'CN=tes
                                                         store.keypasswd('imported-aliaschanged', 'newkeypwd', 'changedkeypwd', function(err, res) {
                                                             console.log('keypass for ' + res.alias + ' changed');
 
-                                                            store.exportcert('imported-fromstdin', 'test.cer', function(err, res) {
+                                                            store.exportcert('imported-fromstdin', 'example.cer', function(err, res) {
 
-                                                                store.exportcert('imported-fromstdin', 'test-rfc.cer', true, function(err, res) {
+                                                                store.exportcert('imported-fromstdin', 'example-rfc.cer', true, function(err, res) {
 
                                                                     store.getcert('test-rfc.cer', undefined, undefined, undefined, true, function(err, res) {
                                                                         //console.log(res);
 
-                                                                        store.getcert(undefined, require('fs').readFileSync('test-rfc.cer'), undefined, undefined, false, function(err, res) {
+                                                                        store.getcert(undefined, require('fs').readFileSync('example-rfc.cer'), undefined, undefined, false, function(err, res) {
                                                                             console.log('Got cert ' + res.Owner);
                                                                             store.list(function(err, res) {
                                                                                 printlist(err, res);
