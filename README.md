@@ -7,7 +7,7 @@ basic wrapper for the java keytool
 
 First, require the library:
 ```javascript
-var Keytool = require('../lib/keytool');
+var Keytool = require('node-keytool');
 ```
 Then, open / create your keystore file:
 ```javascript
