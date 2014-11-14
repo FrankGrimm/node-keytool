@@ -1,6 +1,6 @@
 'use strict';
 
-var Keytool = require('./lib/keytool');
+var Keytool = require('../lib/keytool');
 
 var printlist = function printlist(err, res) {
     if (err) {
@@ -78,6 +78,8 @@ store.genkeypair('keyalias' + Math.round(Math.random()*100), 'changeit', 'CN=tes
                                                                             console.log('Got cert ' + res.Owner);
                                                                             store.list(function(err, res) {
                                                                                 printlist(err, res);
+
+                                                                                // the rest of this file is presented by the artist formally known as a callback
                                                                             });
                                                                         });
                                                                     });
@@ -100,4 +102,3 @@ store.genkeypair('keyalias' + Math.round(Math.random()*100), 'changeit', 'CN=tes
     });
 });
 
-module.exports = exports = Keytool;
