@@ -100,3 +100,7 @@ Removes an alias completely
 
 Read the content of the keystore. See examples/listcontent.js for an example on how to use the results.
 
+### Create empty keystore: create(cb)
+
+Creates an empty keystore at the previously specified location. Fails if the targeted file already exists.
+
