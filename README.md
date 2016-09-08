@@ -32,7 +32,7 @@ See the manpage for keytool for more details.
 
 ### Certificate Request: certreq(alias, keypass, dname, outfile, sigalg, cb)
 
-Generated a certificate request for the given alias. If `outfile` is omitted or null, `res.outdata` will contain the certificate data.
+Generates a certificate request for the given alias. If `outfile` is omitted or null, `res.outdata` will contain the certificate data.
 
 ### Rename an alias: changealias(alias, keypass, destalias, cb)
 
